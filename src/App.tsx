@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="min-h-screen">
       <Header currentPage={currentPage} onNavigate={handleNavigate} />
-      <main style={{ paddingTop: '100px' }}>
+      <main style={{ paddingTop: currentPage === '/' ? '0' : '100px' }}>
         {renderPage()}
       </main>
       <Footer />
