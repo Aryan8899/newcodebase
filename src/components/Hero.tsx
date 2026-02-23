@@ -82,90 +82,114 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-cyan-50">
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-      />
+      <style>{`
+        @keyframes bounce-slow {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 3s ease-in-out infinite;
+        }
 
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-green-400 to-cyan-400 rounded-full blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }}></div>
+        /* Mobile only overrides - tablet & desktop untouched */
+        @media (max-width: 1023px) {
+          .hero-content-left {
+            text-align: center;
+          }
+          .hero-rank-row {
+            justify-content: center;
+          }
+          .hero-btn-row {
+            justify-content: center;
+          }
+          .hero-img-wrap {
+            margin-top: 60px;
+            padding: 0 40px;
+          }
+          .hero-bubble-left {
+            bottom: -20px !important;
+            left: 0px !important;
+          }
+          .hero-bubble-right {
+            top: -20px !important;
+            right: 0px !important;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .hero-h1 { font-size: 32px !important; }
+          .hero-rank-num { font-size: 36px !important; }
+          .hero-bubble-size {
+            width: 80px !important;
+            height: 80px !important;
+          }
+          .hero-bubble-num { font-size: 18px !important; }
+        }
+      `}</style>
+
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full blur-3xl opacity-20 animate-pulse" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-green-400 to-cyan-400 rounded-full blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '1s' }} />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="text-left space-y-6">
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+
+          {/* Left — desktop: text-left, mobile: text-center */}
+          <div className="hero-content-left text-left space-y-6">
+            <h1 className="hero-h1 text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
               Mobile App
               <br />
               <span className="text-cyan-600">Development Company</span>
             </h1>
 
-            <div className="flex items-center space-x-2">
-              <span className="text-5xl font-bold text-pink-600">#1</span>
+            <div className="hero-rank-row flex items-center space-x-2">
+              <span className="hero-rank-num text-5xl font-bold text-pink-600">#1</span>
               <div className="text-sm text-gray-700">
                 <p>Ranked as <span className="font-semibold text-pink-600">#1 Top App Development</span></p>
                 <p>Company in USA and India</p>
               </div>
             </div>
 
-            <button className="flex items-center space-x-2 text-gray-700 hover:text-pink-600 transition-colors group">
-              <div className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center group-hover:border-pink-600 transition-colors">
-                <ArrowRight className="w-5 h-5" />
-              </div>
-              <span className="font-medium">Drop Your Queries</span>
-            </button>
+            <div className="hero-btn-row flex">
+              <button className="flex items-center space-x-2 text-gray-700 hover:text-pink-600 transition-colors group">
+                <div className="w-10 h-10 rounded-full border-2 border-gray-300 flex items-center justify-center group-hover:border-pink-600 transition-colors">
+                  <ArrowRight className="w-5 h-5" />
+                </div>
+                <span className="font-medium">Drop Your Queries</span>
+              </button>
+            </div>
           </div>
 
-          <div className="relative">
-            <div className="relative z-10 animate-float">
-              <div className="bg-gradient-to-br from-cyan-400 to-blue-500 rounded-3xl p-8 shadow-2xl transform rotate-6">
-                <div className="bg-white rounded-2xl shadow-lg overflow-hidden transform -rotate-6">
-                  <div className="bg-gradient-to-r from-blue-500 to-cyan-400 p-6">
-                    <div className="flex justify-between items-center mb-4">
-                      <div className="flex space-x-2">
-                        <div className="w-3 h-3 bg-white rounded-full"></div>
-                        <div className="w-3 h-3 bg-white rounded-full"></div>
-                        <div className="w-3 h-3 bg-white rounded-full"></div>
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-4 gap-2">
-                      {[...Array(12)].map((_, i) => (
-                        <div key={i} className="w-full h-2 bg-white/30 rounded"></div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="p-6 space-y-4">
-                    {[...Array(3)].map((_, i) => (
-                      <div key={i} className="flex items-center space-x-3">
-                        <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-lg"></div>
-                        <div className="flex-1 space-y-2">
-                          <div className="h-3 bg-gray-200 rounded w-3/4"></div>
-                          <div className="h-2 bg-gray-100 rounded w-1/2"></div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+          {/* Right — desktop: -bottom-10 -left-10 etc. exactly as original */}
+          <div className="hero-img-wrap relative flex items-center justify-center">
+            <img
+              src="https://www.hyperlinkinfosystem.com/assets/img/main-banner/mobile-app-development.png"
+              alt="Mobile App Development"
+              className="relative z-10 w-full max-w-lg object-contain drop-shadow-2xl"
+            />
 
-            <div className="absolute -bottom-10 -left-10 z-20 animate-bounce-slow">
-              <div className="w-32 h-32 bg-white rounded-full shadow-xl flex items-center justify-center">
+            <div className="hero-bubble-left hero-bubble-size absolute -bottom-10 -left-10 z-20 animate-bounce-slow"
+              style={{ width: '128px', height: '128px' }}>
+              <div className="w-full h-full bg-white rounded-full shadow-xl flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600">12+</div>
+                  <div className="hero-bubble-num text-3xl font-bold text-blue-600">12+</div>
                   <div className="text-xs text-gray-600">Years</div>
                 </div>
               </div>
             </div>
 
-            <div className="absolute -top-10 -right-10 z-20 animate-bounce-slow" style={{ animationDelay: '0.5s' }}>
-              <div className="w-32 h-32 bg-white rounded-full shadow-xl flex items-center justify-center">
+            <div className="hero-bubble-right hero-bubble-size absolute -top-10 -right-10 z-20 animate-bounce-slow"
+              style={{ width: '128px', height: '128px', animationDelay: '0.5s' }}>
+              <div className="w-full h-full bg-white rounded-full shadow-xl flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-pink-600">4500+</div>
+                  <div className="hero-bubble-num text-3xl font-bold text-pink-600">4500+</div>
                   <div className="text-xs text-gray-600">Apps</div>
                 </div>
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
