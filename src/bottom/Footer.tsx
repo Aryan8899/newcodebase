@@ -43,19 +43,18 @@ export default function Footer() {
               <div className="flex items-start space-x-3">
                 <Phone className="w-5 h-5 text-pink-500 flex-shrink-0 mt-1" />
                 <div>
-                  <div className="text-sm">+91 8000 284 488</div>
-                  <div className="text-sm">+1 (303) 476 4465</div>
+                  <div className="text-sm">+91 111 111 111</div>
+                  
                 </div>
               </div>
               <div className="flex items-start space-x-3">
                 <Mail className="w-5 h-5 text-pink-500 flex-shrink-0 mt-1" />
-                <div className="text-sm">info@hyperlinkinfosystem.com</div>
+                <div className="text-sm">info@Mobrib.com</div>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="w-5 h-5 text-pink-500 flex-shrink-0 mt-1" />
                 <div className="text-sm">
-                  India: Ahmedabad, Gujarat<br />
-                  USA: New York, United States
+                  India
                 </div>
               </div>
             </div>

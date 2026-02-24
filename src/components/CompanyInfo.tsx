@@ -47,7 +47,7 @@ export default function CompanyInfo() {
               
               Mobrib is a modern task marketplace platform that connects people who need work done with trusted local service providers. From small errands to professional services, Mobrib makes hiring fast, secure, and hassle-free.
 
-              With real-time updates, competitive offers, and secure escrow payments, we ensure transparency and trust at every step. <span className="font-semibold">Hyperlink InfoSystem</span> is a leading Mobile App, Software Development and Web Development company helping global businesses to bring digital transformation. Being a true technological companion, Hyperlink InfoSystem helps startups to enterprise-level businesses to be the industry leaders.
+              With real-time updates, competitive offers, and secure escrow payments, we ensure transparency and trust at every step. <span className="font-bold">Mobrib</span> is a leading Mobile App, Software Development and Web Development company helping global businesses to bring digital transformation. Being a true technological companion, Hyperlink InfoSystem helps startups to enterprise-level businesses to be the industry leaders.
             </p>
             {/* <button className="animate-item flex items-center space-x-2 text-pink-600 hover:text-pink-700 transition-colors group">
               <span className="font-medium">About Us</span>
