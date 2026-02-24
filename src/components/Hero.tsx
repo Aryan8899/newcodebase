@@ -277,7 +277,7 @@ export default function Hero() {
           {/* Right */}
           <div className="hero-right">
             <img
-              src="https://www.hyperlinkinfosystem.com/assets/img/main-banner/mobile-app-development.png"
+              src="https://www.mobribinfosystem.com/assets/img/main-banner/mobile-app-development.png"
               alt="Mobile App Development"
               className="hero-img"
             />
