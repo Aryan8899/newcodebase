@@ -103,7 +103,7 @@ export default function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-gray-400 text-sm">
-              &copy; 2024 Hyperlink InfoSystem. All rights reserved.
+              &copy; 2024 Mobrib InfoSystem. All rights reserved.
             </div>
 
             <div className="flex items-center space-x-6">
