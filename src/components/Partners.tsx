@@ -1,135 +1,126 @@
 export default function Partners() {
   const partners = [
     {
-      name: 'Google',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
+      name: 'Flutter',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png',
     },
     {
-      name: 'Microsoft',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg',
+      name: 'Firebase',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/3/37/Firebase_Logo.svg',
     },
     {
-      name: 'CMMI',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/CMMI_Logo.svg/320px-CMMI_Logo.svg.png',
+      name: 'Razorpay',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/8/89/Razorpay_logo.svg',
+    },
+    {
+      name: 'Stripe',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg',
     },
     {
       name: 'AWS',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
     },
     {
-      name: 'Oracle',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg',
-    },
-  ];
-
-  const clients = [
-    {
-      name: 'GAR',
-      logo: 'https://www.hyperlinkinfosystem.com/assets/img/clients/gar.png',
-    },
-    {
-      name: 'TATA',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Tata_logo.svg',
-    },
-    {
-      name: 'Viacom',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Viacom_logo_%282006%29.svg/320px-Viacom_logo_%282006%29.svg.png',
-    },
-    {
-      name: 'Zyrtec',
-      logo: 'https://www.hyperlinkinfosystem.com/assets/img/clients/zyrtec.png',
-    },
-    {
-      name: 'Google',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
-    },
-    {
-      name: 'Astral',
-      logo: 'https://www.hyperlinkinfosystem.com/assets/img/clients/astral.png',
-    },
-    {
-      name: 'Disney',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a4/Disney_wordmark.svg',
-    },
-    {
-      name: 'CEAT',
-      logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CEAT_logo.svg/320px-CEAT_logo.svg.png',
+      name: 'Socket.IO',
+      logo: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Socket-io.svg',
     },
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section style={{ padding: '60px 0', background: '#fff' }}>
       <style>{`
-        .logo-img {
-          height: 32px;
-          width: auto;
-          object-fit: contain;
-          filter: grayscale(100%);
-          opacity: 0.65;
-          transition: filter 0.3s, opacity 0.3s;
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+        .partners-wrap {
+          max-width: 1100px;
+          margin: 0 auto;
+          padding: 0 32px;
+          font-family: 'DM Sans', sans-serif;
         }
-        .logo-img:hover {
+
+        .partners-label {
+          text-align: center;
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: 2.5px;
+          text-transform: uppercase;
+          color: #94a3b8;
+          margin-bottom: 36px;
+        }
+
+        .partners-grid {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .partner-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          padding: 20px 28px;
+          border-radius: 16px;
+          border: 1.5px solid #f1f5f9;
+          background: #fafafa;
+          transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+          cursor: default;
+          min-width: 130px;
+        }
+        .partner-card:hover {
+          border-color: #e2e8f0;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+          transform: translateY(-3px);
+          background: #fff;
+        }
+        .partner-card:hover .partner-logo {
           filter: grayscale(0%);
           opacity: 1;
         }
-        .client-logo-img {
-          height: 40px;
+
+        .partner-logo {
+          height: 36px;
           width: auto;
+          max-width: 100px;
           object-fit: contain;
           filter: grayscale(100%);
           opacity: 0.6;
           transition: filter 0.3s, opacity 0.3s;
         }
-        .client-logo-img:hover {
-          filter: grayscale(0%);
-          opacity: 1;
+
+        .partner-name {
+          font-size: 11px;
+          font-weight: 600;
+          color: #94a3b8;
+          letter-spacing: 0.3px;
         }
-        .partners-divider {
-          border: none;
-          border-top: 1px solid #f0f0f0;
-          margin: 40px 0;
+
+        @media (max-width: 600px) {
+          .partners-wrap { padding: 0 16px; }
+          .partner-card { min-width: 100px; padding: 16px 18px; }
+          .partner-logo { height: 28px; }
         }
       `}</style>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Official Partners */}
-        <div className="text-center mb-10">
-          <p className="text-gray-500 text-sm font-medium tracking-widest uppercase mb-8">Official Partner of</p>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
-            {partners.map((partner, index) => (
+      <div className="partners-wrap">
+        <p className="partners-label">Powered by Trusted Technologies</p>
+
+        <div className="partners-grid">
+          {partners.map((partner, index) => (
+            <div className="partner-card" key={index}>
               <img
-                key={index}
                 src={partner.logo}
                 alt={partner.name}
-                className="logo-img"
+                className="partner-logo"
                 onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
+                  (e.target as HTMLImageElement).style.display = 'none';
                 }}
               />
-            ))}
-          </div>
-        </div>
-
-        <hr className="partners-divider" />
-
-        {/* Clients */}
-        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16 mt-10">
-          {clients.map((client, index) => (
-            <img
-              key={index}
-              src={client.logo}
-              alt={client.name}
-              className="client-logo-img"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                // fallback to text if logo fails
-                const span = document.createElement('span');
-                span.textContent = client.name;
-                span.style.cssText = 'font-weight:700;font-size:18px;color:#999;';
-                target.parentNode?.replaceChild(span, target);
-              }}
-            />
+              <span className="partner-name">{partner.name}</span>
+            </div>
           ))}
         </div>
       </div>

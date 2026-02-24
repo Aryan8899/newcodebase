@@ -75,6 +75,24 @@ export default function Testimonials() {
           opacity: 1;
           transform: scale(1);
         }
+
+        /* ── RESPONSIVE ONLY ── */
+        @media (max-width: 767px) {
+          .tm-grid {
+            grid-template-columns: 1fr !important;
+          }
+          .tm-heading h2 {
+            font-size: 28px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .tm-card-inner {
+            padding: 20px !important;
+          }
+          .tm-heading h2 {
+            font-size: 24px !important;
+          }
+        }
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,34 +103,36 @@ export default function Testimonials() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="tm-grid grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className={`tm-card bg-white rounded-2xl p-8 shadow-lg ${visible ? 'show' : ''}`}
+              className={`tm-card bg-white rounded-2xl shadow-lg ${visible ? 'show' : ''}`}
               style={{ transitionDelay: `${index * 0.15}s` }}
             >
-              <div className="flex items-center space-x-4 mb-6">
-                <div className={`tm-avatar w-16 h-16 ${testimonial.color} rounded-full flex items-center justify-center`}>
-                  <span className={`text-2xl font-bold ${testimonial.iconColor}`}>
-                    {testimonial.name.charAt(0)}
-                  </span>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900">{testimonial.name}</h3>
-                  <div className="flex items-center space-x-1">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`tm-star w-4 h-4 fill-yellow-400 text-yellow-400 ${visible ? 'show' : ''}`}
-                        style={{ transitionDelay: `${index * 0.15 + i * 0.07}s` }}
-                      />
-                    ))}
-                    <span className="text-sm text-gray-600 ml-2">{testimonial.rating} Ratings</span>
+              <div className="tm-card-inner p-8">
+                <div className="flex items-center space-x-4 mb-6">
+                  <div className={`tm-avatar w-16 h-16 ${testimonial.color} rounded-full flex items-center justify-center flex-shrink-0`}>
+                    <span className={`text-2xl font-bold ${testimonial.iconColor}`}>
+                      {testimonial.name.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900">{testimonial.name}</h3>
+                    <div className="flex items-center space-x-1 flex-wrap">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`tm-star w-4 h-4 fill-yellow-400 text-yellow-400 ${visible ? 'show' : ''}`}
+                          style={{ transitionDelay: `${index * 0.15 + i * 0.07}s` }}
+                        />
+                      ))}
+                      <span className="text-sm text-gray-600 ml-2">{testimonial.rating} Ratings</span>
+                    </div>
                   </div>
                 </div>
+                <p className="text-gray-600 leading-relaxed">{testimonial.review}</p>
               </div>
-              <p className="text-gray-600 leading-relaxed">{testimonial.review}</p>
             </div>
           ))}
         </div>

@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 
-export default function BusinessTypes() {
+interface BusinessTypesProps {
+  onNavigate: (path: string) => void;
+}
+
+export default function BusinessTypes({ onNavigate }: BusinessTypesProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -24,23 +28,23 @@ export default function BusinessTypes() {
   const businessTypes = [
     {
       number: '1.',
-      title: 'Startups Business',
-      description: "Have a strict budget and minimum resources? Don't worry, our professionals will give exactly needed tech support to turn your dream idea into a reality.",
+      title: 'Busy Individuals',
+      description: "Need help with daily tasks, repairs, deliveries, or home services? Post a task and get it done quickly.",
     },
     {
       number: '2.',
-      title: 'Small Business',
-      description: 'Our proficients can help you build your brand identity blending their development experience with well-your development requirements.',
+      title: 'Homeowners',
+      description: 'From plumbing to electrical fixes, find verified professionals near you.',
     },
     {
       number: '3.',
-      title: 'Enterprise Business',
-      description: 'We help enterprise-level businesses enhance their business reach and streamline processes with innovative technology.',
+      title: 'Freelancers & Skilled Professionals',
+      description: 'Offer your services, receive job requests, and earn flexibly.',
     },
     {
       number: '4.',
-      title: 'Agency Business',
-      description: 'Enhance the offering of your Agency business by leveraging our development expertise and trending technologies.',
+      title: 'Small Service Providers',
+      description: 'Grow your income by connecting with local customers instantly.',
     },
   ];
 
@@ -87,6 +91,25 @@ export default function BusinessTypes() {
           transition: color 0.3s ease, transform 0.3s ease;
           display: inline-block;
         }
+
+        .bt-queries-btn {
+          margin-top: 6px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          color: #e91e8c;
+          font-size: 15px;
+          font-weight: 600;
+          padding: 0;
+          font-family: inherit;
+          transition: gap 0.2s;
+        }
+        .bt-queries-btn:hover { gap: 12px; }
+        .bt-queries-btn:hover .bt-arrow { transform: translateX(4px); }
+        .bt-arrow { transition: transform 0.2s; }
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -110,9 +133,15 @@ export default function BusinessTypes() {
               <p className="text-gray-600">
                 Reach out to the team of the most innovative IT transformation team and bring the transformation you need.
               </p>
-              <button className="mt-6 flex items-center space-x-2 text-pink-600 hover:text-pink-700 transition-colors group">
-                <span className="font-medium">Drop Your Queries</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <button
+                className="bt-queries-btn"
+                onClick={() => {
+                  onNavigate('/contact');
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+              >
+                <span>Drop Your Queries</span>
+                <ArrowRight size={18} className="bt-arrow" />
               </button>
             </div>
           </div>
@@ -122,11 +151,10 @@ export default function BusinessTypes() {
         <div className="mt-20" ref={bottomRef}>
           <div className={`bt-heading ${bottomVisible ? 'show' : ''}`}>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Building Smarter Business through Better Tech Experience
+              Who Uses Mobrib?
             </h2>
-            <p className="text-gray-600 max-w-3xl mb-12">
-              As a leading app development company in the USA and India, we have worked with 2700+ businesses whether it is a start-up or enterprise, and deliver the best solution in the industry. At Hyperlink InfoSystem, we offer a broad range of IT consulting services based on business requirements.
-            </p>
+            <br/>
+            <br/>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

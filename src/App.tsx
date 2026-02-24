@@ -43,7 +43,7 @@ function App() {
             <Services />
             <Awards />
             <DevelopmentProcess />
-            <BusinessTypes />
+            <BusinessTypes onNavigate={handleNavigate} />
             <Testimonials />
           </>
         );

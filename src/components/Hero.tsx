@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -69,14 +69,24 @@ export default function Hero() {
   }, []);
 
   return (
-    <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', background: 'linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #ecfeff 100%)', boxSizing: 'border-box', paddingTop: '90px' }}>
+    <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', background: 'linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #ecfeff 100%)', boxSizing: 'border-box', paddingTop: '130px' }}>
       <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
         @keyframes bounce-slow {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-10px); }
         }
         .animate-bounce-slow { animation: bounce-slow 3s ease-in-out infinite; }
-        .animate-pulse-slow { animation: pulse 3s ease-in-out infinite; }
+
+        @keyframes slideDown {
+          from { opacity: 0; transform: translateY(-40px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeSlideUp {
+          from { opacity: 0; transform: translateY(16px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
 
         .hero-grid {
           display: grid;
@@ -87,57 +97,90 @@ export default function Hero() {
           max-width: 1200px;
           margin: 0 auto;
           padding: 40px 32px 60px;
+          font-family: 'DM Sans', sans-serif;
         }
 
         .hero-left { text-align: left; }
+
         .hero-h1 {
-          font-size: 56px;
+          font-size: 52px;
           font-weight: 800;
-          color: #111827;
-          line-height: 1.15;
-          margin: 0 0 24px;
+          color: #0f172a;
+          line-height: 1.18;
+          margin: 0 0 16px;
+          letter-spacing: -1px;
+          overflow: hidden;
         }
-        .hero-cyan { color: #0891b2; }
-        .hero-rank-row {
+
+        .hero-h1-main {
+          display: block;
+          animation: slideDown 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          opacity: 0;
+          animation-delay: 0.1s;
+        }
+
+        .hero-cyan {
+          color: #0891b2;
+          display: block;
+          animation: slideDown 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+          opacity: 0;
+          animation-delay: 0.35s;
+        }
+
+        .hero-sub {
+          font-size: 15px;
+          color: #64748b;
+          margin: 0 0 32px;
+          line-height: 1.6;
+          opacity: 0;
+          animation: fadeSlideUp 0.6s ease forwards;
+          animation-delay: 0.65s;
+        }
+        .hero-sub strong { color: #db2777; font-weight: 600; }
+
+        .store-btns {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+          opacity: 0;
+          animation: fadeSlideUp 0.6s ease forwards;
+          animation-delay: 0.85s;
+        }
+        .store-btn {
           display: flex;
           align-items: center;
           gap: 10px;
-          margin-bottom: 24px;
-        }
-        .hero-rank-num {
-          font-size: 48px;
-          font-weight: 800;
-          color: #db2777;
-        }
-        .hero-rank-text { font-size: 14px; color: #374151; }
-        .hero-btn {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          background: none;
+          padding: 12px 20px;
+          border-radius: 14px;
           border: none;
           cursor: pointer;
-          color: #374151;
-          font-size: 15px;
-          font-weight: 500;
-          padding: 0;
-          transition: color 0.2s;
+          text-decoration: none;
+          transition: transform 0.2s, box-shadow 0.2s;
+          font-family: 'DM Sans', sans-serif;
         }
-        .hero-btn:hover { color: #db2777; }
-        .hero-btn-circle {
-          width: 40px; height: 40px;
-          border-radius: 50%;
-          border: 2px solid #d1d5db;
-          display: flex; align-items: center; justify-content: center;
-          transition: border-color 0.2s;
+        .store-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 28px rgba(0,0,0,0.15);
         }
-        .hero-btn:hover .hero-btn-circle { border-color: #db2777; }
+        .store-btn-dark { background: #0f172a; color: #fff; }
+        .store-btn-light {
+          background: #fff; color: #0f172a;
+          border: 1.5px solid #e2e8f0;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .store-btn-icon { width: 24px; height: 24px; flex-shrink: 0; }
+        .store-btn-text { display: flex; flex-direction: column; align-items: flex-start; }
+        .store-btn-sub { font-size: 10px; font-weight: 400; opacity: 0.7; line-height: 1; margin-bottom: 2px; }
+        .store-btn-name { font-size: 15px; font-weight: 700; line-height: 1; }
 
         .hero-right {
           position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
+          opacity: 0;
+          animation: fadeSlideUp 0.8s ease forwards;
+          animation-delay: 0.4s;
         }
         .hero-img {
           width: 100%;
@@ -149,35 +192,30 @@ export default function Hero() {
         }
         .hero-bubble {
           position: absolute;
-          width: 120px; height: 120px;
           background: #fff;
           border-radius: 50%;
           box-shadow: 0 10px 30px rgba(0,0,0,0.12);
           display: flex; align-items: center; justify-content: center;
           z-index: 2;
         }
-        .hero-bubble-left { bottom: -20px; left: -20px; }
-        .hero-bubble-right { top: -20px; right: -20px; }
 
         /* ── MOBILE ── */
         @media (max-width: 1023px) {
           .hero-grid {
             grid-template-columns: 1fr;
             text-align: center;
-            padding: 20px 24px 80px;
-            gap: 32px;
+            padding: 32px 24px 80px;
+            gap: 28px;
           }
           .hero-left { text-align: center; }
-          .hero-h1 { font-size: 36px; }
-          .hero-rank-row { justify-content: center; }
-          .hero-rank-num { font-size: 36px; }
-          .hero-btn { justify-content: center; }
-          .hero-right { padding: 0 32px; margin-top: 16px; }
-          .hero-bubble { width: 80px !important; height: 80px !important; }
-          .hero-bubble-left { bottom: -10px; left: 8px; }
-          .hero-bubble-right { top: -10px; right: 8px; }
-          .hero-bubble-num { font-size: 18px !important; }
-          .hero-bubble-label { font-size: 10px !important; }
+          .hero-h1 { font-size: 28px; letter-spacing: -0.5px; }
+          .store-btns { justify-content: center; }
+          .hero-right { padding: 0 24px; margin-top: 8px; }
+          .hero-bubble { width: 76px !important; height: 76px !important; }
+          .hero-bubble-left { bottom: -10px !important; left: 4px !important; }
+          .hero-bubble-right { top: -10px !important; right: 4px !important; }
+          .hero-bubble-num { font-size: 17px !important; }
+          .hero-bubble-label { font-size: 9px !important; }
         }
 
         @media (min-width: 1024px) {
@@ -201,24 +239,39 @@ export default function Hero() {
           {/* Left */}
           <div className="hero-left">
             <h1 className="hero-h1">
-              Mobile App<br />
-              <span className="hero-cyan">Development Company</span>
+              <span className="hero-h1-main">Connecting People Who Need Work Done</span>
+              <span className="hero-cyan">with Skilled Taskers Nearby</span>
             </h1>
 
-            <div className="hero-rank-row">
-              <span className="hero-rank-num">#1</span>
-              <div className="hero-rank-text">
-                <p>Ranked as <strong style={{ color: '#db2777' }}>#1 Top App Development</strong></p>
-                <p>Company in USA and India</p>
-              </div>
-            </div>
+            <p className="hero-sub">
+              Post a task. Get offers. Choose the best. <strong>Pay securely.</strong>
+            </p>
 
-            <button className="hero-btn">
-              <div className="hero-btn-circle">
-                <ArrowRight size={18} />
-              </div>
-              Drop Your Queries
-            </button>
+            {/* Store Buttons */}
+            <div className="store-btns">
+              <a href="#" className="store-btn store-btn-dark">
+                <svg className="store-btn-icon" viewBox="0 0 24 24" fill="white">
+                  <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+                </svg>
+                <div className="store-btn-text">
+                  <span className="store-btn-sub">Download on the</span>
+                  <span className="store-btn-name">App Store</span>
+                </div>
+              </a>
+
+              <a href="#" className="store-btn store-btn-light">
+                <svg className="store-btn-icon" viewBox="0 0 24 24">
+                  <path d="M3.18 23.76C3.06 23.69 3 23.54 3 23.33V0.67C3 0.46 3.06 0.31 3.18 0.24L3.24 0.18L13.27 10.21V10.5L3.24 20.52L3.18 23.76Z" fill="#EA4335"/>
+                  <path d="M16.59 13.53L13.27 10.21V9.92L16.6 6.6L16.67 6.64L20.63 8.9C21.76 9.54 21.76 10.58 20.63 11.23L16.67 13.49L16.59 13.53Z" fill="#FBBC04"/>
+                  <path d="M16.67 13.49L13.27 10.12L3.18 20.21C3.55 20.6 4.15 20.65 4.82 20.28L16.67 13.49Z" fill="#34A853"/>
+                  <path d="M16.67 6.75L4.82 -0.04C4.15 -0.41 3.55 -0.36 3.18 0.03L13.27 10.12L16.67 6.75Z" fill="#4285F4"/>
+                </svg>
+                <div className="store-btn-text">
+                  <span className="store-btn-sub">Get it on</span>
+                  <span className="store-btn-name">Google Play</span>
+                </div>
+              </a>
+            </div>
           </div>
 
           {/* Right */}
@@ -238,8 +291,8 @@ export default function Hero() {
 
             <div className="hero-bubble hero-bubble-right animate-bounce-slow" style={{ animationDelay: '0.5s' }}>
               <div style={{ textAlign: 'center' }}>
-                <div className="hero-bubble-num" style={{ fontSize: '22px', fontWeight: 800, color: '#db2777' }}>4500+</div>
-                <div className="hero-bubble-label" style={{ fontSize: '11px', color: '#6b7280' }}>Apps</div>
+                <div className="hero-bubble-num" style={{ fontSize: '22px', fontWeight: 800, color: '#db2777' }}>5000+</div>
+                <div className="hero-bubble-label" style={{ fontSize: '11px', color: '#6b7280' }}>downloads</div>
               </div>
             </div>
           </div>

@@ -33,3 +33,13 @@
 * {
   scroll-behavior: smooth;
 }
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  overflow-x: hidden;
+  max-width: 100%;
+}

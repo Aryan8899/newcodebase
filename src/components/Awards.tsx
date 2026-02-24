@@ -20,10 +20,10 @@ export default function Awards() {
   }, []);
 
   const badges = [
-    { name: 'Top App Developers', year: '2024' },
-    { name: 'Best Mobile App', year: '2024' },
-    { name: 'Top Rated Company', year: '2024' },
-    { name: 'Excellence Award', year: '2024' },
+    { name: 'Secure Escrow Payments', year: '2024' },
+    { name: 'Transparent Ratings & Reviews', year: '2024' },
+    { name: 'Real-Time Offers', year: '2024' },
+    { name: 'Local Verified Providers', year: '2024' },
     { name: 'Industry Leader', year: '2024' },
     { name: 'Customer Choice', year: '2024' },
   ];
@@ -78,32 +78,53 @@ export default function Awards() {
         .aw-badge-icon {
           transition: transform 0.3s ease;
         }
+
+        /* ── RESPONSIVE ONLY ── */
+        @media (max-width: 1023px) {
+          .aw-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .aw-left h2 {
+            font-size: 28px !important;
+          }
+        }
+        @media (max-width: 480px) {
+          .aw-badges-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+          .aw-right-card {
+            padding: 20px !important;
+          }
+          .aw-left h2 {
+            font-size: 24px !important;
+          }
+        }
       `}</style>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="aw-grid grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
           {/* Left */}
           <div className={`text-white space-y-6 aw-left ${visible ? 'show' : ''}`}>
             <h2 className="text-4xl font-bold leading-tight">
-              Acclaimed by Pioneers,<br />Chosen by You!
+              India's Smart Task Marketplace for <br />Everyday Services
             </h2>
             <p className="text-blue-200 leading-relaxed">
-              Hyperlink InfoSystem's trail of awards is an example of our championing excellence and innovations that drive outcomes.
+              Post a task, receive offers from trusted local service providers, and pay securely through escrow
             </p>
           </div>
 
           {/* Right */}
-          <div className={`bg-blue-800/50 backdrop-blur-sm rounded-2xl p-8 aw-right ${visible ? 'show' : ''}`}>
+          <div className={`aw-right-card bg-blue-800/50 backdrop-blur-sm rounded-2xl p-8 aw-right ${visible ? 'show' : ''}`}>
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center w-20 h-20 bg-white rounded-full mb-4 aw-icon-wrap">
                 <Award className="w-10 h-10 text-blue-600" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-2">Ranked As #1</h3>
-              <p className="text-blue-200">Top App Development Company since 2014</p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="aw-badges-grid grid grid-cols-3 gap-4">
               {badges.map((badge, index) => (
                 <div
                   key={index}
